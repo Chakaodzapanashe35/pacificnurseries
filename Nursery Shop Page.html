@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacific Nurseries - Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="IMG-20240923-WA0006.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+                nav ul li a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: #FFD700;
+                    }
+
+        #searchBar {
+            margin-top: 10px;
+            padding: 10px;
+            width: 80%;
+            max-width: 350px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .hero {
+            background-image: url('path/to/your/hero-image.jpg');
+            height: 300px;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+            .hero::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 1;
+            }
+
+            .hero h1 {
+                font-size: 3em;
+                position: relative;
+                z-index: 2;
+            }
+
+        .featured-products {
+            background-color: #e8f5e9;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .product:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .product img {
+                max-width: 100%;
+                height: 300px;
+                border-radius: 5px;
+                transition: transform 0.3s;
+            }
+
+            .product:hover img {
+                transform: scale(1.1);
+            }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+            button:hover {
+                background-color: #388E3C;
+            }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+
+        .social-media {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .social-media a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #4CAF50;
+                font-weight: bold;
+                transition: color 0.3s, transform 0.3s;
+                font-size: 1.5em;
+            }
+
+                .social-media a:hover {
+                    color: #FFD700;
+                    transform: scale(1.1);
+                }
+
+        .whatsapp-link {
+            display: flex;
+            align-items: center;
+            background-color: #25D366; /* WhatsApp green */
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+            .whatsapp-link:hover {
+                background-color: #128C7E; /* Darker green on hover */
+            }
+
+        .live-chat {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .live-chat-button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+            .live-chat-button:hover {
+                background-color: #388E3C;
+            }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .product-list {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #searchBar {
+                width: 90%;
+            }
+
+            .hero h1 {
+                font-size: 2.5em; /* Adjust font size for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-list {
+                padding: 5px; /* Less padding on very small screens */
+            }
+
+            .product img {
+                height: auto; /* Responsive height */
+            }
+
+            .hero h1 {
+                font-size: 2em; /* Further decrease font size */
+            }
+
+            button {
+                width: 100%; /* Full-width buttons on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <img src="IMG-20240923-WA0005.jpg" alt="Pacific Nurseries Logo" style="width: 50px; height: auto; margin-right: 10px;">
+            Pacific Nurseries - Shop Our Greenery
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="Nursery Home Page.html">Nursery Home Page</a></li>
+                <li><a href="Nursery About Page.html">Nursery About Page</a></li>
+                <li><a href="Nursery Shop Page.html">Nursery Shop Page</a></li>
+                <li><a href="Nursery Plant Care Guide Page.html">Plant Care Guide Page</a></li>
+                <li><a href="Nursery Blog Page.html">Nursery Blog Page</a></li>
+                <li><a href="Nursery Contact Us Page.html">Contact Us Page</a></li>
+                <li><a href="Nusery In-ground swimming pool.html">Nusery In-ground swimming pool</a></li>
+            </ul>
+        </nav>
+        <input type="text" id="searchBar" placeholder="Search for your favorite plants...">
+    </header>
+
+    <div class="hero">
+        <h1>Discover the Beauty of Plants</h1>
+        <a href="Nursery Shop Page.html" style="background-color: #FFD700; padding: 10px 20px; border-radius: 5px; color: black; text-decoration: none;">Shop Now</a>
+    </div>
+
+    <main>
+        <h2>Featured Plants</h2>
+        <div class="featured-products">
+            <div class="product-list">
+                <div class="product"> 
+                    <img src="Mondo grass $1per pocket.jpg" alt="Mondo grass Plant">
+                    <h3>Mondo grass Plant</h3>
+                    <p>$1per pocket</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="Monkey's tail cactus $10.jpg" alt="Monkey's tail cactus">
+                    <h3>Monkey's tail cactus</h3>
+                    <p>$10.00</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="Mother-in-law cushion in pots $20perplant and pot.jpg" alt="Mother-in-law cushion">
+                    <h3> Mother-in-law cushion Plant</h3>
+                    <p>$20.00 per plant and pot</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="Mushrooms  $30for the lot.jpg" alt="Mushrooms ">
+                    <h3>Mushrooms </h3>
+                    <p>$30 for the lot.</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Available Plants</h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="Orchids in plastic pockets $1 each.jpg" alt="Orchids">
+                <h3>Orchids</h3>
+                <p>in plastic pockets $1 each and $20 Orchid plant & Pot.</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Ponytails in beautiful pots $15per pot with plant.jpg" alt="Ponytails">
+                <h3>Ponytails Plant</h3>
+                <p>$15.00 per pot and $2 each in plastic pockects</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="September Lilies in pots $30.jpg" alt="September Lilies Plant">
+                <h3>September Lilies Plant</h3>
+                <p>$30.00 and plastic pockets $1each</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Vitex bushes $5 each.jpg" alt="Vitex bushes">
+                <h3>Vitex bushes</h3>
+                <p>$5.00 each</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Vintage ducks $8.00 each.jpg" alt="Vintage ducks">
+                <h3>Vintage ducks</h3>
+                <p>$8.00 each</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Various plants in pots $15perplant & pot.jpg" alt="Various plants in pots">
+                <h3>Various plants in pots</h3>
+                <p>$15.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Various hanging baskets of succulents $5 each basket.jpg" alt="Various hanging baskets of succulents">
+                <h3>Various hanging baskets of succulents</h3>
+                <p>$5.00</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="Various empty hanging baskets $3each.jpg" alt="Various empty hanging basketst">
+                <h3>Various empty hanging baskets</h3>
+                <p>$3.00 each</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+        <h2>What Our Customers Say</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"My indoor garden has never looked better! Thank you, Pacific Nurseries!"</p>
+                <p><strong>- Sarah J.</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"Excellent quality plants and amazing customer service!"</p>
+                <p><strong>- Mark T.</strong></p>
+            </div>
+            <div class="testimonial">
+                <p>"I appreciate the care tips provided with each purchase!"</p>
+                <p><strong>- Emily R.</strong></p>
+            </div>
+        </div>
+
+        <h2>Join Our Community!</h2>
+        <p>Sign up for our newsletter to receive exclusive offers, plant care tips, and updates on our latest arrivals!</p>
+        <form class="contact-form">
+            <input type="email" placeholder="Your email" required>
+            <button type="submit" class="submit">Subscribe</button>
+        </form>
+
+        <h2>Get in Touch</h2>
+        <form class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" required rows="5"></textarea>
+            <button type="submit" class="submit">Send Message</button>
+        </form>
+
+        <section class="contact-details">
+            <h2>Owner Contact Information</h2>
+            <p><strong>Name:</strong> Pinias Mandebvu</p>
+            <p><strong>Email:</strong> <a href="mailto:pacificinternational52@gmail.com">pacificinternational52@gmail.com</a></p>
+            <p><strong>Phone:</strong> +263 772 358 013, +263 719 358 013</p>
+            <p><strong>Location:</strong> 58 Bishop Gaul Ave, Milton Park, Harare</p>
+            <p><strong>Location:</strong> near, Belvedere Square Shopping Mall</p>
+            <p><strong>Office Hours:</strong>Mon-Sat, 9 AM - 5 PM, Sun, Closed</p>p>
+        </section>
+
+        <section class="developer-details">
+            <h2>Meet the Developer</h2>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <img src="Panashe Chakaodza.jpg" alt="Developer Image" style="border-radius: 50%; width: 100px; height: 100px; margin: 15px 0;">
+                <p><strong>Name:</strong> Panashe Chakaodza</p>
+                <p><strong>Email:</strong> chakaodzapannashe35@gmail.com</p>
+                <p><strong>Location:</strong> 1447 Hartfield Estate, Chiremba Road, Harare, Zimbabwe</p>
+            </div>
+        </section>
+
+        <div class="social-links">
+            <p class="social-media">
+                <a href="https://www.facebook.com/pinias.mandebvu.5" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/+263772358013" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@pacificnurserieszimbabwe" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </p>
+            <div class="whatsapp-link">
+                <i class="fab fa-whatsapp"></i>
+                <span>Chat with us on WhatsApp</span>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Pacific Nurseries. All Rights Reserved.</p>
+        <div class="live-chat">
+            <button onclick="startChat()">Live Chat</button>
+        </div>
+    </footer>
+    <script>
+        function startChat() {
+            alert("Live chat feature coming soon!");
+        }
+    </script>
+</body>
+</html>

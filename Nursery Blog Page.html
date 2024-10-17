@@ -1,0 +1,509 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Nursery Blog</title>
+    <link rel="icon" type="image/x-icon" href="IMG-20240923-WA0006.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+                nav ul li a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: #FFD700;
+                    }
+
+        #searchContainer {
+            position: relative;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        #searchBar {
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: none;
+            border-radius: 5px;
+            padding-left: 30px;
+            transition: border 0.3s;
+        }
+
+            #searchBar:focus {
+                border: 2px solid #FFD700;
+                outline: none;
+            }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+        }
+
+        h1, h2 {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .articles-container, .popular-articles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        article {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+            article:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+        .read-more {
+            cursor: pointer;
+            color: #4CAF50;
+            text-decoration: underline;
+        }
+
+        .additional-content {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+            .social-links a {
+                color: white;
+                margin: 0 10px;
+                text-decoration: none;
+                font-size: 1.5em;
+            }
+
+        .contact-form, .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+
+        button.submit {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+            button.submit:hover {
+                background-color: #388E3C;
+            }
+
+        .contact-details,
+        .developer-details {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+
+            .developer-details img {
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+                margin: 15px 0;
+            }
+
+        .live-chat {
+            margin-top: 10px;
+        }
+
+        .quote-button {
+            background-color: #FFD700;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .quote-button:hover {
+                background-color: #FFC300;
+            }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            #searchBar {
+                max-width: 90%; /* Adjust search bar width */
+            }
+
+            main {
+                padding: 15px; /* Less padding on medium screens */
+            }
+
+            article {
+                padding: 10px; /* Decrease article padding */
+            }
+        }
+
+        @media (max-width: 768px) {
+            #searchBar {
+                width: 90%; /* Wider search bar on smaller screens */
+            }
+
+            h1 {
+                font-size: 2em; /* Decrease h1 font size */
+            }
+
+            h2 {
+                font-size: 1.6em; /* Adjust h2 size */
+            }
+
+            button.submit {
+                font-size: 1em; /* Adjust button font size */
+            }
+
+            .articles-container, .popular-articles-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust grid for small screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form, .newsletter-form {
+                margin: 10px; /* Less margin for forms */
+            }
+
+            article {
+                padding: 8px; /* Minimal padding for articles */
+            }
+
+            h1 {
+                font-size: 1.8em; /* Further decrease h1 font size */
+            }
+
+            h2 {
+                font-size: 1.5em; /* Further adjust h2 size */
+            }
+
+            .quote-button {
+                padding: 8px 16px; /* Smaller button */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <img src="IMG-20240923-WA0005.jpg" alt="Plant Nursery Logo" style="width: 50px; height: auto; margin-right: 10px;">
+            Plant Nursery Blog
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="Nursery Home Page.html">Nursery Home Page</a></li>
+                <li><a href="Nursery About Page.html">Nursery About Page</a></li>
+                <li><a href="Nursery Shop Page.html">Nursery Shop Page</a></li>
+                <li><a href="Nursery Plant Care Guide Page.html">Plant Care Guide Page</a></li>
+                <li><a href="Nursery Blog Page.html">Nursery Blog Page</a></li>
+                <li><a href="Nursery Contact Us Page.html">Contact Us Page</a></li>
+                <li><a href="Nusery In-ground swimming pool.html">Nusery In-ground swimming pool</a></li>
+            </ul>
+        </nav>
+        <div id="searchContainer">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchBar" placeholder="Search for plants...">
+        </div>
+    </header>
+
+    <main>
+        <h2>Latest Articles</h2>
+        <div class="articles-container">
+            <article>
+                <h3>New Plant Varieties for 2024</h3>
+                <p>Check out the exciting new varieties we have in store this year!</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        This year, we are introducing several new varieties, including:<br>
+                        - **Sunset Orchid**: A vibrant flower that thrives in indirect sunlight.<br>
+                        - **Blue Desert Cactus**: Perfect for arid environments and requires minimal care.<br>
+                        - **Golden Pothos**: A hardy plant that purifies air and is great for beginners.
+                    </p>
+                </div>
+            </article>
+            <article>
+                <h3>Seasonal Care Tips</h3>
+                <p>Learn how to care for your plants through the changing seasons.</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        In spring, focus on fertilizing your plants as they start to grow.<br>
+                        In summer, ensure that your plants are adequately watered.<br>
+                        In fall, prepare for dormancy by reducing water and fertilizer.<br>
+                        In winter, protect your plants from frost and extreme temperatures.
+                    </p>
+                </div>
+            </article>
+            <article>
+                <h3>Indoor Plant Essentials</h3>
+                <p>Discover the best plants for indoor spaces and their care requirements.</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        Some essential indoor plants include:<br>
+                        - **Snake Plant**: Very forgiving and easy to care for.<br>
+                        - **Spider Plant**: Great for improving air quality and easy to propagate.<br>
+                        - **Peace Lily**: Beautiful flowers and can thrive in low light.
+                    </p>
+                </div>
+            </article>
+            <article>
+                <h3>Common Plant Diseases</h3>
+                <p>Identify and treat common diseases that affect houseplants.</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        Common diseases include:<br>
+                        - **Powdery Mildew**: White powdery spots can be treated with fungicides.<br>
+                        - **Root Rot**: Caused by overwatering; ensure proper drainage.<br>
+                        - **Leaf Spot**: Remove affected leaves and improve air circulation.
+                    </p>
+                </div>
+            </article>
+            <article>
+                <h3>Gardening Tools You Need</h3>
+                <p>Essential tools for every gardener to make your gardening easier.</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        Must-have tools include:<br>
+                        - **Hand Trowel**: Perfect for digging and planting.<br>
+                        - **Pruning Shears**: Essential for trimming and shaping plants.<br>
+                        - **Watering Can**: For easy watering of indoor and outdoor plants.
+                    </p>
+                </div>
+            </article>
+            <article>
+                <h3>Creating a Plant Care Routine</h3>
+                <p>Tips on how to establish a routine for watering, feeding, and pruning.</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        Establish a routine by:<br>
+                        - Setting specific days for watering and fertilizing.<br>
+                        - Keeping a calendar for pruning and repotting tasks.<br>
+                        - Observing your plants regularly for signs of distress.
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <h2>Popular Articles</h2>
+        <div class="popular-articles-container">
+            <article>
+                <h3>Best Plants for Beginners</h3>
+                <p>A guide for novice gardeners on easy-to-care-for plants.</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        Some great beginner plants include:<br>
+                        - **Aloe Vera**: Minimal care and great for health benefits.<br>
+                        - **ZZ Plant**: Tolerates low light and infrequent watering.<br>
+                        - **Pothos**: Fast-growing and forgiving plant.
+                    </p>
+                </div>
+            </article>
+            <article>
+                <h3>Organic Gardening Techniques</h3>
+                <p>Learn how to grow your garden without harmful chemicals.</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        Techniques include:<br>
+                        - **Companion Planting**: Pairing plants for mutual benefits.<br>
+                        - **Natural Pest Control**: Using beneficial insects to control pests.<br>
+                        - **Crop Rotation**: Preventing soil depletion by rotating crops.
+                    </p>
+                </div>
+            </article>
+            <article>
+                <h3>Container Gardening Ideas</h3>
+                <p>Creative ways to garden in small spaces using containers.</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        Ideas for container gardening:<br>
+                        - **Vertical Gardens**: Use wall space for climbing plants.<br>
+                        - **Hanging Baskets**: Great for flowers and trailing plants.<br>
+                        - **Window Boxes**: Perfect for herbs or small vegetables.
+                    </p>
+                </div>
+            </article>
+            <article>
+                <h3>Herbs for Your Kitchen</h3>
+                <p>How to grow and use fresh herbs in your cooking.</p>
+                <span class="read-more" onclick="toggleContent(this)">Read More</span>
+                <div class="additional-content">
+                    <p>
+                        Popular kitchen herbs include:<br>
+                        - **Basil**: Great for Italian dishes and easy to grow.<br>
+                        - **Mint**: Fast-growing and perfect for teas or desserts.<br>
+                        - **Rosemary**: Hardy and adds flavor to many dishes.
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <h2>Get a Quote on WhatsApp</h2>
+        <p>If you have any inquiries or need a quote, click the button below to chat with us on WhatsApp!</p>
+        <a href="https://wa.me/263772358013" target="_blank">
+            <button class="quote-button">Chat on WhatsApp</button>
+        </a>
+
+        <h2>Subscribe to Our Newsletter</h2>
+        <form class="newsletter-form">
+            <label for="newsletterEmail">Email:</label>
+            <input type="email" id="newsletterEmail" required>
+            <button type="submit" class="submit">Subscribe</button>
+        </form>
+
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" required rows="5"></textarea>
+            <button type="submit" class="submit">Send Message</button>
+        </form>
+
+        <div class="contact-details">
+            <h2>Owner Contact Information</h2>
+            <p><strong>Name:</strong> Pinias Mandebvu</p>
+            <p><strong>Email:</strong> <a href="mailto:pacificinternational52@gmail.com">pacificinternational52@gmail.com</a></p>
+            <p><strong>Phone:</strong> +263 772 358 013, +263 719 358 013</p>
+            <p><strong>Location:</strong> 58 Bishop Gaul Ave, Milton Park, Harare</p>
+            <p><strong>Location:</strong> near, Belvedere Square Shopping Mall</p>
+            <p><strong>Office Hours:</strong>Mon-Sat, 9 AM - 5 PM, Sun, Closed</p>
+        </div>
+
+        <div class="developer-details">
+            <h2>Developer Information</h2>
+            <img src="Panashe Chakaodza.jpg" alt="Developer Image">
+            <p><strong>Name:</strong> Panashe Chakaodza</p>
+            <p><strong>Email:</strong> chakaodzapannashe35@gmail.com</p>
+            <p><strong>Location:</strong> 1447 Hartfield Estate, Chiremba Road, Harare, Zimbabwe</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Plant Nursery</p>
+        <div class="social-links">
+            <p class="social-media">
+                <a href="https://www.facebook.com/pinias.mandebvu.5" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/+263772358013" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@pacificnurserieszimbabwe" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </p>
+        </div>
+        <div class="live-chat">
+            <button onclick="startChat()">Live Chat</button>
+        </div>
+    </footer>
+
+    <script>
+        function toggleContent(element) {
+            const additionalContent = element.nextElementSibling;
+            if (additionalContent.style.display === "none" || additionalContent.style.display === "") {
+                additionalContent.style.display = "block";
+                element.textContent = "Read Less";
+            } else {
+                additionalContent.style.display = "none";
+                element.textContent = "Read More";
+            }
+        }
+
+        function startChat() {
+            alert("Live chat feature coming soon!");
+        }
+    </script>
+</body>
+</html>

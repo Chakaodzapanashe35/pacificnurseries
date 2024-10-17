@@ -1,0 +1,553 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Plant Nursery for inquiries, support, and more.">
+    <title>Contact Us | Plant Nursery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="IMG-20240923-WA0006.jpg">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e3f2fd, #f9f9f9);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            cursor: url('custom-cursor.png'), auto; /* Custom cursor */
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+                nav ul li a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    font-size: 1.1em;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: #FFD700;
+                    }
+
+        #searchContainer {
+            position: relative;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        #searchBar {
+            padding: 15px;
+            width: 80%;
+            max-width: 400px;
+            border: none;
+            border-radius: 25px;
+            padding-left: 40px;
+            transition: box-shadow 0.3s;
+            font-size: 1em;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+            #searchBar:focus {
+                box-shadow: 0 0 5px #4CAF50;
+                outline: none;
+            }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4CAF50;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+            .section:hover {
+                transform: translateY(-5px);
+            }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 15px 0 5px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        input, textarea, select {
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            resize: vertical;
+            transition: border-color 0.3s;
+            font-size: 1em;
+        }
+
+            input:focus, textarea:focus, select:focus {
+                border-color: #4CAF50;
+                outline: none;
+            }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+            button:hover {
+                background-color: #388E3C;
+                transform: scale(1.05);
+            }
+
+        .contact-item {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+            .contact-item i {
+                margin-right: 15px;
+                color: #4CAF50;
+                font-size: 1.5em;
+            }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+            .social-links a {
+                color: white;
+                margin: 0 10px;
+                text-decoration: none;
+                font-size: 1.5em;
+                transition: color 0.3s;
+            }
+
+                .social-links a:hover {
+                    color: #FFD700;
+                }
+        .social-media {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .social-media a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #4CAF50;
+                font-weight: bold;
+                transition: color 0.3s, transform 0.3s;
+                font-size: 1.5em;
+            }
+
+                .social-media a:hover {
+                    color: #FFD700;
+                    transform: scale(1.1);
+                }
+
+        .whatsapp-link {
+            display: flex;
+            align-items: center;
+            background-color: #25D366; /* WhatsApp green */
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+            .whatsapp-link:hover {
+                background-color: #128C7E; /* Darker green on hover */
+            }
+
+        .live-chat {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .live-chat-button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+            .live-chat-button:hover {
+                background-color: #388E3C;
+            }
+
+        .faq-item, .testimonial-item {
+            margin: 10px 0;
+            font-size: 1em;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px 0;
+            margin-top: 5px;
+        }
+
+        .map-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+            .chat-button:hover {
+                background-color: #0056b3;
+            }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+            .floating-btn:hover {
+                background-color: #388E3C;
+                transform: scale(1.1);
+            }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            main {
+                padding: 10px; /* Less padding on medium screens */
+            }
+
+            .section {
+                padding: 20px; /* Adjust padding for sections */
+            }
+
+            h2 {
+                font-size: 1.8em; /* Decrease h2 font size */
+            }
+        }
+
+        @media (max-width: 768px) {
+            #searchBar {
+                width: 90%; /* Wider search bar on smaller screens */
+            }
+
+            h1 {
+                font-size: 2em; /* Decrease h1 font size */
+            }
+
+            h2 {
+                font-size: 1.6em; /* Adjust h2 size */
+            }
+
+            button {
+                font-size: 1em; /* Adjust button font size */
+            }
+
+            .section {
+                padding: 15px; /* Less padding for mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 10px; /* Minimal padding for very small screens */
+            }
+
+            h1 {
+                font-size: 1.8em; /* Further decrease h1 font size */
+            }
+
+            h2 {
+                font-size: 1.5em; /* Further adjust h2 size */
+            }
+
+            .contact-item {
+                flex-direction: column; /* Stack contact items */
+                align-items: flex-start;
+            }
+
+                .contact-item i {
+                    margin: 0 0 10px; /* Adjust icon margin */
+                }
+
+            button {
+                font-size: 0.9em; /* Smaller button font size */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <img src="IMG-20240923-WA0005.jpg" alt="Plant Nursery Logo" style="width: 60px; height: auto; margin-right: 10px;">
+            Contact Us
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="Nursery Home Page.html">Nursery Home Page</a></li>
+<li><a href="Nursery About Page.html">Nursery About Page</a></li>
+<li><a href="Nursery Shop Page.html">Nursery Shop Page</a></li>
+<li><a href="Nursery Plant Care Guide Page.html">Plant Care Guide Page</a></li>
+<li><a href="Nursery Blog Page.html">Nursery Blog Page</a></li>
+<li><a href="Nursery Contact Us Page.html">Contact Us Page</a></li>
+<li><a href="Nusery In-ground swimming pool.html">Nusery In-ground swimming pool</a></li>
+            </ul>
+        </nav>
+        <div id="searchContainer">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchBar" placeholder="Search for plants...">
+        </div>
+    </header>
+    <main>
+        <div class="section">
+            <h2>Get in Touch</h2>
+            <form id="contactForm" autocomplete="off">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" required>
+                <label for="inquiryType">Inquiry Type:</label>
+                <select id="inquiryType" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="order_status">Order Status</option>
+                    <option value="plant_care">Plant Care Advice</option>
+                    <option value="feedback">Feedback</option>
+                </select>
+                <label for="message">Message:</label>
+                <textarea id="message" required rows="5"></textarea>
+                <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="formConfirmation" style="display: none;">Thank you! Your message has been sent.</div>
+        </div>
+
+        <div class="section">
+            <h2>Contact Information</h2>
+            <div class="contact-item"><i class="fas fa-phone"></i><strong>Phone:</strong> +263 772 358 013, +263 719 358 013</div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><strong>Email:</strong> pacificinternational52@gmail.com</div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i><strong>Location:</strong> 58 Bishop Gaul Ave, Milton Park, Harare</div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.522914172054!2d18.974189315215703!3d-17.84753658812454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef91a5f1f2d7a27%3A0x2b1e0b1e0c4b1e6c!2s58%20Bishop%20Gaul%20Ave%2C%20Milton%20Park%2C%20Harare%2C%20Zimbabwe!5e0!3m2!1sen!2sus!4v1638582942185!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <h2>Business Hours</h2>
+            <p>Mon-Fri: 9 AM - 5 PM</p>
+            <p>Sat: 9 AM - 5 PM</p>
+            <p>Sun: Closed</p>
+        </div>
+
+        <div class="section">
+            <h2>Service Offerings</h2>
+            <p>We provide a variety of services to meet your gardening needs:</p>
+            <ul>
+                <li><strong>Plant Sales:</strong> A wide selection of indoor and outdoor plants.</li>
+                <li><strong>Consultation:</strong> Personalized plant care advice and gardening tips.</li>
+                <li><strong>Workshops:</strong> Join our workshops to learn more about plant care and gardening.</li>
+                <li><strong>Delivery:</strong> Convenient delivery options for your purchases.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Upcoming Events</h2>
+            <p>Join us for our upcoming events:</p>
+            <ul>
+                <li><strong>Plant Care Workshop:</strong> March 15, 2024</li>
+                <li><strong>Spring Plant Sale:</strong> April 10-12, 2024</li>
+                <li><strong>Garden Design Seminar:</strong> May 5, 2024</li>
+            </ul>
+            <p>Stay tuned for more details!</p>
+        </div>
+
+        <div class="section">
+            <h2>Connect With Us</h2>
+            <p>Follow us on social media for the latest updates and promotions!</p>
+            <div class="social-links">
+                <p class="social-media">
+                    <a href="https://www.facebook.com/pinias.mandebvu.5" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/+263772358013" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.tiktok.com/@pacificnurserieszimbabwe" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </p>
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Chat with us on WhatsApp</span>
+                </a>
+            </div>
+            <div class="live-chat">
+                <button class="chat-button" onclick="startChat()">Live Chat</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>FAQs</h2>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <strong>Q: How do I care for my plants?</strong>
+                <div class="faq-answer">A: Each plant has specific needs; please refer to our plant care guide.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <strong>Q: What is your return policy?</strong>
+                <div class="faq-answer">A: We accept returns within 30 days of purchase. Contact us for more details.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <strong>Q: Do you offer delivery?</strong>
+                <div class="faq-answer">A: Yes, we provide delivery services within Harare. Additional charges may apply.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <strong>Q: Can I change my order after placing it?</strong>
+                <div class="faq-answer">A: Yes, but please contact us as soon as possible to make any changes.</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Customer Testimonials</h2>
+            <div class="testimonial-item">"Great quality plants and excellent service!" - Jane Doe</div>
+            <div class="testimonial-item">"I love my new plant, thanks for the advice!" - John Smith</div>
+            <div class="testimonial-item">"The staff were very helpful and knowledgeable." - Emily White</div>
+            <div class="testimonial-item">"Fast delivery and beautiful plants!" - Mark Brown</div>
+        </div>
+
+        <div class="section">
+            <h2>Newsletter Signup</h2>
+            <form id="newsletterForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <div id="newsletterConfirmation" style="display: none;">Thank you for subscribing to our newsletter!</div>
+            <p>Join our newsletter to receive the latest updates and special offers!</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Plant Nursery. All rights reserved.</p>
+    </footer>
+    <button class="floating-btn" onclick="scrollToTop()"><i class="fas fa-chevron-up"></i></button>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert("Message sent! Thank you for contacting us.");
+            this.reset(); // Reset form fields after submission
+            document.getElementById('formConfirmation').style.display = 'block';
+        });
+
+        document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('newsletterConfirmation').style.display = 'block';
+            this.reset(); // Reset form fields after submission
+        });
+
+        function startChat() {
+            alert("Live chat feature coming soon!");
+        }
+
+        function toggleFAQ(faq) {
+            const answer = faq.querySelector('.faq-answer');
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }

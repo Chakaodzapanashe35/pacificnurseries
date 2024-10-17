@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Pacific Nurseries</title>
+    <link rel="icon" type="image/x-icon" href="IMG-20240923-WA0006.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.9), rgba(56, 142, 60, 0.9)), url('your_background_image.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1000;
+        }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+                nav ul li a {
+                    color: #333;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 10px 15px;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: #4CAF50;
+                    }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            margin: 20px 0;
+            font-size: 2.5em;
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        p {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .carousel {
+            position: relative;
+            margin: 20px auto;
+            max-width: 90%; /* Adjusted for responsiveness */
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+            .carousel .slides {
+                display: flex;
+                transition: transform 0.5s ease;
+            }
+
+            .carousel .slide {
+                min-width: 100%;
+                position: relative;
+            }
+
+            .carousel img {
+                width: 100%;
+                height: 180px; /* Fixed height for consistency */
+                object-fit: cover; /* Maintain aspect ratio */
+                border-radius: 10px;
+            }
+
+            .carousel .caption {
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+                background-color: rgba(0, 0, 0, 0.7);
+                color: white;
+                padding: 8px 12px;
+                border-radius: 5px;
+                font-size: 0.9em;
+            }
+
+            .carousel .nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(255, 255, 255, 0.8);
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+                transition: background-color 0.3s;
+            }
+
+                .carousel .nav:hover {
+                    background-color: rgba(255, 255, 255, 1);
+                }
+
+            .carousel .prev {
+                left: 10px;
+            }
+
+            .carousel .next {
+                right: 10px;
+            }
+
+            .carousel .dots {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .carousel .dot {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                margin: 0 5px;
+                background-color: #bbb;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                .carousel .dot.active {
+                    background-color: #4CAF50;
+                }
+
+        .team {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .team-member {
+            margin: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+            .team-member:hover {
+                transform: scale(1.05);
+            }
+
+            .team-member img {
+                border-radius: 50%;
+                width: 120px;
+                height: 120px;
+                margin-bottom: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+        .testimonials {
+            background-color: #e8f5e9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+            text-align: left;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .sustainability {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+            text-align: left;
+            max-width: 800px;
+            margin: 30px auto;
+        }
+
+        .faq {
+            margin: 30px 0;
+        }
+
+        .faq-item {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .faq-item:hover {
+                background-color: #f1f1f1;
+            }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+            .social-links a {
+                color: white;
+                margin: 0 10px;
+                text-decoration: none;
+                font-size: 1.5em;
+                transition: color 0.3s;
+            }
+
+                .social-links a:hover {
+                    color: #FFD700;
+                }
+
+        .whatsapp-link {
+            display: flex;
+            align-items: center;
+            background-color: #25D366; /* WhatsApp green */
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+            .whatsapp-link:hover {
+                background-color: #128C7E; /* Darker green on hover */
+            }
+
+        .live-chat {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .live-chat-button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+            .live-chat-button:hover {
+                background-color: #388E3C;
+            }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+
+        button.submit {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            button.submit:hover {
+                background-color: #388E3C;
+            }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            main {
+                padding: 15px; /* Less padding on medium screens */
+            }
+
+            .carousel {
+                max-width: 90%; /* Adjust carousel width */
+            }
+
+            h2 {
+                font-size: 2.5em; /* Maintain larger font size */
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column; /* Stack nav items on small screens */
+            }
+
+            .team {
+                flex-direction: column; /* Stack team members */
+            }
+
+            h2 {
+                font-size: 2em; /* Decrease h2 font size */
+            }
+
+            p {
+                font-size: 1em; /* Adjust paragraph font size */
+            }
+
+            .carousel .caption {
+                font-size: 0.8em; /* Smaller captions on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-member img {
+                width: 100px; /* Smaller images for team members */
+                height: 100px; /* Consistent height */
+            }
+
+            button.submit {
+                padding: 8px; /* Smaller button padding */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Pacific Nurseries</h1>
+        <nav>
+            <ul>
+                <li><a href="Nursery Home Page.html">Nursery Home Page</a></li>
+                <li><a href="Nursery About Page.html">Nursery About Page</a></li>
+                <li><a href="Nursery Shop Page.html">Nursery Shop Page</a></li>
+                <li><a href="Nursery Plant Care Guide Page.html">Plant Care Guide Page</a></li>
+                <li><a href="Nursery Blog Page.html">Nursery Blog Page</a></li>
+                <li><a href="Nursery Contact Us Page.html">Contact Us Page</a></li>
+                <li><a href="Nusery In-ground swimming pool.html">Nusery In-ground swimming pool</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Our Story</h2>
+        <p>Welcome to Pacific Nurseries, where our passion for nature drives us to provide the best plants for your home and garden. Our mission is to promote sustainable gardening and enrich the lives of our community through greenery.</p>
+
+        <div class="carousel">
+            <div class="slides" id="slides">
+                <div class="slide">
+                    <img src="slid.jpg" alt="Beautiful Plant 1">
+                    <div class="caption">Discover our vibrant collection of indoor plants</div>
+                </div>
+                <div class="slide">
+                    <img src="slide.jpg" alt="Beautiful Plant 2">
+                    <div class="caption">Enhance your garden with our outdoor varieties</div>
+                </div>
+                <div class="slide">
+                    <img src="slide1.jpg" alt="Beautiful Plant 3">
+                    <div class="caption">Expert advice for all your gardening needs</div>
+                </div>
+            </div>
+            <button class="nav prev" onclick="showSlide(currentIndex - 1)">&#10094;</button>
+            <button class="nav next" onclick="showSlide(currentIndex + 1)">&#10095;</button>
+            <div class="dots" id="dots"></div>
+        </div>
+
+        <h2>Our Core Values</h2>
+        <p>At Pacific Nurseries, we prioritize sustainability, quality, and outstanding customer service. These values guide our operations and customer interactions.</p>
+
+        <h2>Meet Our Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="Panashe Chakaodza.jpg" alt="Pinias Mandebvu">
+                <h3>Pinias Mandebvu</h3>
+                <p>Owner & Senior Consultant</p>
+            </div>
+            <div class="team-member">
+                <img src="Panashe Chakaodza.jpg" alt="Panashe Chakaodza">
+                <h3>Panashe Chakaodza</h3>
+                <p>Developer & Designer</p>
+            </div>
+            <div class="team-member">
+                <img src="Panashe Chakaodza.jpg" alt="Jane Doe">
+                <h3>Foward</h3>
+                <p>Landscape Expert</p>
+            </div>
+        <div class="team-member">
+            <img src="Panashe Chakaodza.jpg" alt="Jane Doe">
+            <h3>Mrs J J Mandebvu</h3>
+            <p>Administration</p>
+        </div>
+        </div>
+
+        <h2>Customer Testimonials</h2>
+        <div class="testimonials">
+            <p>"The plants I bought from Pacific Nurseries have become the centerpiece of my home!" - Sarah K.</p>
+            <p>"Incredible service and the best selection of plants!" - John D.</p>
+            <p>"A delightful shopping experience with knowledgeable staff!" - Alice M.</p>
+        </div>
+
+        <h2>Sustainability Practices</h2>
+        <div class="sustainability">
+            <p>We are committed to eco-friendly gardening techniques, utilizing organic fertilizers and promoting biodiversity in our practices.</p>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <strong>What types of plants do you offer?</strong>
+                <div class="faq-answer">We offer a wide variety of indoor and outdoor plants, including flowers, shrubs, and trees.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <strong>Do you provide gardening tips?</strong>
+                <div class="faq-answer">Yes, we provide gardening tips through our blog and in-store consultations.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <strong>What are your store hours?</strong>
+                <div class="faq-answer">We are open Mon-Fri, 9 AM - 5 PM.</div>
+            </div>
+        </div>
+
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" required rows="5"></textarea>
+            <button type="submit" class="submit">Send Message</button>
+        </form>
+
+        <h2>Owner Contact Information</h2>
+        <p><strong>Name:</strong> Pinias Mandebvu</p>
+        <p><strong>Email:</strong> <a href="mailto:pacificinternational52@gmail.com">pacificinternational52@gmail.com</a></p>
+        <p><strong>Phone:</strong> +263 772 358 013, +263 719 358 013</p>
+        <p><strong>Location:</strong> 58 Bishop Gaul Ave, Milton Park, Harare</p>
+        <p><strong>Location:</strong> near, Belvedere Square Shopping Mall</p>
+        <p><strong>Office Hours:</strong>Mon-Sat, 9 AM - 5 PM, Sun, Closed</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Pacific Nurseries. All rights reserved.</p>
+        <div class="social-links">
+            <p class="social-media">
+                <a href="https://www.facebook.com/pinias.mandebvu.5" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/+263772358013" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@pacificnurserieszimbabwe" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </p>
+                <i class="fab fa-whatsapp"></i>
+                <span>Chat with us on WhatsApp</span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.getElementById('slides');
+            const totalSlides = slides.children.length;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        setInterval(() => {
+            showSlide(currentIndex + 1);
+        }, 3000);
+
+        function toggleFAQ(faqItem) {
+            const answer = faqItem.querySelector('.faq-answer');
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+
+</html>
+

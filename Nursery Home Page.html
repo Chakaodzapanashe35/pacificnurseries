@@ -1,0 +1,620 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacific Nurseries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="IMG-20240923-WA0006.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background: rgba(76, 175, 80, 0.9);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+            header h1 {
+                margin: 0;
+            }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+                nav ul li a {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    transition: color 0.3s;
+                }
+
+                    nav ul li a:hover {
+                        color: #FFD700;
+                    }
+
+        #searchBar {
+            margin-top: 10px;
+            padding: 10px;
+            width: 80%;
+            max-width: 350px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+        }
+
+            .hero img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                animation: slide 12s infinite;
+                opacity: 0;
+            }
+
+                .hero img.active {
+                    opacity: 1;
+                }
+
+        @keyframes slide {
+            0%, 20% {
+                opacity: 1;
+            }
+
+            25%, 45% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .call-to-action {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+            .call-to-action button {
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                .call-to-action button:hover {
+                    background-color: #388E3C;
+                }
+
+        .featured-products, .gallery, .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 10px;
+        }
+
+        .product, .service {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: calc(30% - 40px);
+            box-sizing: border-box;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+        }
+
+            .product:hover, .service:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .product img, .service img {
+                max-width: 100%;
+                height: 200px; /* Fixed height for uniformity */
+                border-radius: 5px;
+            }
+
+        .customer-reviews {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.9);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+            .social-links a {
+                color: white;
+                margin: 0 10px;
+                text-decoration: none;
+                font-size: 1.5em;
+                transition: color 0.3s;
+            }
+
+                .social-links a:hover {
+                    color: #FFD700;
+                }
+        .social-media {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .social-media a {
+                margin: 0 10px;
+                text-decoration: none;
+                color: #4CAF50;
+                font-weight: bold;
+                transition: color 0.3s, transform 0.3s;
+                font-size: 1.5em;
+            }
+
+                .social-media a:hover {
+                    color: #FFD700;
+                    transform: scale(1.1);
+                }
+
+        .whatsapp-link {
+            display: flex;
+            align-items: center;
+            background-color: #25D366; /* WhatsApp green */
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+            .whatsapp-link:hover {
+                background-color: #128C7E; /* Darker green on hover */
+            }
+
+        .live-chat {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .live-chat-button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+            .live-chat-button:hover {
+                background-color: #388E3C;
+            }
+
+        #newsletter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+            #newsletter input[type="email"] {
+                padding: 10px;
+                width: 250px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            #newsletter button {
+                padding: 10px;
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+                #newsletter button:hover {
+                    background-color: #388E3C;
+                }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            resize: vertical;
+        }
+
+        button.submit {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+            button.submit:hover {
+                background-color: #388E3C;
+            }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto; /* Responsive height */
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+
+            .gallery img:hover {
+                transform: scale(1.05);
+            }
+
+        .gallery-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .product, .service {
+                width: calc(45% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product, .service {
+                width: calc(100% - 20px);
+            }
+
+            #searchBar {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #newsletter input[type="email"] {
+                width: 100%;
+            }
+
+            .call-to-action button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pacific Nurseries</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#plants">Our Plants</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="Nursery Home Page.html">Nursery Home Page</a></li>
+                <li><a href="Nursery About Page.html">Nursery About Page</a></li>
+                <li><a href="Nursery Shop Page.html">Nursery Shop Page</a></li>
+                <li><a href="Nursery Plant Care Guide Page.html">Plant Care Guide Page</a></li>
+                <li><a href="Nursery Blog Page.html">Nursery Blog Page</a></li>
+                <li><a href="Nursery Contact Us Page.html">Contact Us Page</a></li>
+                <li><a href="Nusery In-ground swimming pool.html">Nusery In-ground swimming pool</a></li>
+            </ul>
+        </nav>
+        <input type="text" id="searchBar" placeholder="Search for plants...">
+    </header>
+
+    <div class="hero">
+        <img src="slide.jpg" alt="Hero Image 1" class="active">
+        <img src="slide.jpg" alt="Hero Image 2">
+        <img src="slide.jpg" alt="Hero Image 3">
+    </div>
+
+    <main>
+        <section id="home" class="welcome-message">
+            <h2>Discover the Beauty of Nature</h2>
+            <p>Welcome to our plant nursery where we offer a wide variety of plants to enhance your home and garden. Our passionate team is here to help you find the perfect plants for your needs.</p>
+            <div class="call-to-action">
+                <button onclick="location.href='#about'">Learn More</button>
+                <button onclick="location.href='#contact'">Contact Us</button>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Our nursery has been serving the community for over 10 years, dedicated to providing high-quality plants and exceptional service. Our mission is to inspire people to connect with nature.</p>
+            <h3>Meet Our Team</h3>
+            <p>Our knowledgeable staff is passionate about plants and ready to assist you.</p>
+        </section>
+
+        <section id="plants">
+            <h2>Our Plants</h2>
+            <div class="featured-products">
+                <div class="product">
+                    <img src="Agave various sizes $5 each.jpg" alt="Plant 1">
+                    <h3>Agave Plant</h3>
+                    <p>various sizes $5.00 each</p>
+                    <button>Add to Cart</button>
+                    <div class="customer-reviews">
+                        <p>⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="Ajuga ground cover $1 per pocket.jpg" alt="Plant 2">
+                    <h3>Ajuga ground cover </h3>
+                    <p>$1 per pocket</p>
+                    <button>Add to Cart</button>
+                    <div class="customer-reviews">
+                        <p>⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="Authurium plant in large pot..$40.jpg" alt="Plant 3">
+                    <h3> Authurium plants </h3>
+                    <p>large pot..$40 and in plastic pockets $1each</p>
+                    <button>Add to Cart</button>
+                    <div class="customer-reviews">
+                        <p>⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="Blumerias $1 each.jpg" alt="Plant 4">
+                    <h3>Blumerias</h3>
+                    <p>$1 each</p>
+                    <button>Add to Cart</button>
+                    <div class="customer-reviews">
+                        <p>⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="Cat's tail $2.jpg" alt="Plant 5">
+                    <h3>Cat's tail</h3>
+                    <p>$2.00</p>
+                    <button>Add to Cart</button>
+                    <div class="customer-reviews">
+                        <p>⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="Cordliner in pot $10.jpg" alt="Plant 6">
+                    <h3>Cordliner </h3>
+                    <p>in pot $10.00 and $1 in plastic pockets</p>
+                    <button>Add to Cart</button>
+                    <div class="customer-reviews">
+                        <p>⭐⭐⭐⭐⭐</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="Croton plants various sizes $1 per$2 per $3 each.jpg" alt="Plant 1">
+                    <div class="gallery-info">
+                        <h3>Croton plants </h3>
+                        <p>various sizes $1 per$2 per $3 each</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Cycads $10 each.jpg" alt="Plant 2">
+                    <div class="gallery-info">
+                        <h3>Cycads</h3>
+                        <p>$10.00 each</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Diamond Frost in plastic pockets $1each.jpg" alt="Plant 3">
+                    <div class="gallery-info">
+                        <h3>Diamond Frost</h3>
+                        <p>plastic pockets $1each</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Fern in large sleeves $10 each.jpg" alt="Plant 4">
+                    <div class="gallery-info">
+                        <h3>Fern in large sleeves Plant</h3>
+                        <p>$10.00 each</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Gardenia bushes...$5each.jpg" alt="Plant 5">
+                    <div class="gallery-info">
+                        <h3>Gardenia bushes</h3>
+                        <p>$5.00 each</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="Hibiscus plants $3 each.jpg" alt="Plant 6">
+                    <div class="gallery-info">
+                        <h3>Hibiscus plants</h3>
+                        <p>$3.00 each</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <div class="services">
+                <div class="service">
+                    <img src="plant consultation.jpeg" alt="Service 1">
+                    <h3>Plant Consultations</h3>
+                    <p>Personalized advice to help you choose the right plants for your space.</p>
+                </div>
+                <div class="service">
+                    <img src="design.jpg" alt="Service 2">
+                    <h3>Garden Design</h3>
+                    <p>Expert design services to create your dream garden.</p>
+                </div>
+                <div class="service">
+                    <img src="pruning.jpeg" alt="Service 3">
+                    <h3>Maintenance Services</h3>
+                    <p>Regular maintenance to keep your plants healthy and thriving.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2>Blog</h2>
+            <p>Check out our latest posts for gardening tips, plant care guides, and seasonal advice.</p>
+            <!-- Add blog posts or links as needed -->
+        </section>
+
+        <section>
+            <h2>Testimonials</h2>
+            <blockquote>
+                <p>"This nursery has the best plants and amazing service!"</p>
+                <cite>- Happy Customer</cite>
+            </blockquote>
+        </section>
+
+        <section>
+            <h2>Newsletter Signup</h2>
+            <form id="newsletter">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Connect with Us</h2>
+            <div class="social-media">
+                <p class="social-media">
+                    <a href="https://www.facebook.com/pinias.mandebvu.5" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://wa.me/+263772358013" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.tiktok.com/@pacificnurserieszimbabwe" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" required rows="5"></textarea>
+                <button type="submit" class="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Pacific Nurseries</p>
+        <div class="owner-details">
+            <h3>Owner Contact Information</h3>
+            <p><strong>Name:</strong> Pinias Mandebvu</p>
+            <p><strong>Email:</strong> <a href="mailto:pacificinternational52@gmail.com">pacificinternational52@gmail.com</a></p>
+            <p><strong>Phone:</strong> +263 772 358 013, +263 719 358 013</p>
+            <p><strong>Location:</strong> 58 Bishop Gaul Ave, Milton Park, Harare</p>
+            <p><strong>Location:</strong> near, Belvedere Square Shopping Mall</p>
+            <p><strong>Office Hours:</strong>Mon-Sat, 9 AM - 5 PM, Sun, Closed</p>
+        </div>
+        <div class="developer-details">
+            <h3>Developer Information</h3>
+            <img src="Panashe Chakaodza.jpg" alt="Developer Image" style="border-radius: 50%; width: 100px; height: 100px;">
+            <p><strong>Name:</strong> Panashe Chakaodza</p>
+            <p><strong>Email:</strong> <a href="mailto:chakaodzapannashe35@gmail.com">chakaodzapannashe35@gmail.com</a></p>
+            <p><strong>Location:</strong> 1447 Hartfield Estate Chiremba Road Harare, Zimbabwe</p>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/263772358013" target="_blank" class="whatsapp-link">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Chat with us on WhatsApp</span>
+                </a>
+            </div>
+            <div class="live-chat">
+                <button class="live-chat-button" onclick="startChat()">Live Chat</button>
+            </div>
